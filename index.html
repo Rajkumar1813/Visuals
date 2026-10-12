@@ -1598,20 +1598,20 @@ async function run(ids){
  const M=WebMMuxer,mx=new M.Muxer({target:new M.ArrayBufferTarget(),video:{codec:'V_VP9',width:1080,height:1080,frameRate:30,alpha}});
  const enc=new VideoEncoder({output:(c,m)=>mx.addVideoChunk(c,m),error:e=>alert(e.message)});enc.configure(cfg);
  const cv=document.createElement('canvas');cv.width=cv.height=1080;const cx=cv.getContext('2d');
- const total=ids.reduce((a,i)=>a+S[i].d*30,0);let fi=0;
+ let dl=null;const total=ids.reduce((a,i)=>a+S[i].d*30,0);let fi=0;
  try{for(const i of ids){load(i);await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
   for(let f=0,n=S[i].d*30;f<n;f++){const t=f/30;
    document.getAnimations().forEach(a=>{a.pause();a.currentTime=t*1000});cnt(t);
-   const u=URL.createObjectURL(new Blob([ser()],{type:'image/svg+xml'})),im=new Image();im.src=u;await im.decode();
-   cx.clearRect(0,0,1080,1080);if(bg){cx.fillStyle=bg;cx.fillRect(0,0,1080,1080)}cx.drawImage(im,0,0,1080,1080);URL.revokeObjectURL(u);
+   const im=new Image();await new Promise((ok,no)=>{im.onload=ok;im.onerror=()=>no(new Error('frame render failed'));im.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(ser())});
+   cx.clearRect(0,0,1080,1080);if(bg){cx.fillStyle=bg;cx.fillRect(0,0,1080,1080)}cx.drawImage(im,0,0,1080,1080);
    const vf=new VideoFrame(cv,{timestamp:Math.round(fi*1e6/30),duration:Math.round(1e6/30),alpha:alpha?'keep':'discard'});
    enc.encode(vf,{keyFrame:fi%60==0});vf.close();fi++;
    while(enc.encodeQueueSize>5)await new Promise(r=>setTimeout(r,5));
    if(f%5==0){cap.textContent='Exporting... '+Math.round(fi/total*100)+'% (tab band mat karo)';await new Promise(r=>setTimeout(r))}}}
   await enc.flush();mx.finalize();
-  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([mx.target.buffer],{type:'video/webm'}));a.download=ids.length>1?'all_scenes_merged.webm':'scene_'+(ids[0]+1)+'.webm';a.click();
+  dl=document.createElement('a');dl.href=URL.createObjectURL(new Blob([mx.target.buffer],{type:'video/webm'}));dl.download=ids.length>1?'all_scenes_merged.webm':'scene_'+(ids[0]+1)+'.webm';document.body.appendChild(dl);dl.click();
  }catch(e){alert('Export error: '+e.message)}
- EX=false;st.classList.remove('ex');load(0)}
+ EX=false;st.classList.remove('ex');load(0);if(dl){cap.textContent='Done! Download na ho to tap karo: ';dl.textContent='\u2b07 '+dl.download;dl.style.cssText='color:#6b86ff';cap.appendChild(dl)}}
 const sel=document.createElement('select');sel.innerHTML='<option value="a">Transparent</option><option value="g">Green BG</option><option value="k">Black BG</option>';sel.style.cssText='font:inherit;background:#161b2e;color:#cfd6f5;border:1px solid #2b3354;border-radius:8px;padding:8px';
 const xr=document.createElement('div');xr.id='xr';xr.style.cssText='display:flex;gap:6px;flex-wrap:wrap;margin:0 10px 10px';xr.appendChild(sel);
 S.forEach((_,i)=>{const b=document.createElement('button');b.textContent='\u2b07 '+(i+1);b.onclick=()=>run([i]);xr.appendChild(b)});
