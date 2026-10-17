@@ -36,10 +36,10 @@ body{margin:0;background:var(--bg);color:#cfd6f5;font-family:'JetBrains Mono',ui
 #tb{display:flex;gap:6px;flex-wrap:wrap}
 :root.rec{padding:0}.rec body{min-height:100vh;align-items:center}.rec .w{max-width:none;padding:0}.rec .chip,.rec .pg{display:none}.rec #cap,.rec #tb{display:none}.rec .st{border-radius:0;box-shadow:none;width:min(100vw,100vh)}button{font:inherit;background:#161b2e;color:#cfd6f5;border:1px solid #2b3354;border-radius:8px;padding:8px 12px}
 button.on{background:#6b86ff;color:#0b0f1d;border-color:#6b86ff}
-.st{background:none!important;box-shadow:none!important;animation:none!important;border-radius:0}.pt,.chip,.pg{display:none!important}.w{max-width:600px;padding:0}#cap,#tb{margin:10px}:root{--bg:#000}.st.ex{width:540px!important;height:540px!important;flex:none}.rec #xr{display:none}</style></head><body>
+.st{background:none!important;box-shadow:none!important;animation:none!important;border-radius:0}.pt,.chip,.pg{display:none!important}.w{max-width:600px;padding:0}#cap,#tb{margin:10px}:root{--bg:#000}.wd{height:100%;background:#ff9f43;animation:wd 6s infinite}@keyframes wd{0%,25%{width:0}85%,100%{width:100%}}.ty2{display:inline-block;overflow:hidden;white-space:nowrap;width:0;border-right:.5cqw solid #6b86ff;animation:t2 var(--td) steps(var(--n)) infinite}@keyframes t2{0%,8%{width:0}45%,100%{width:calc(var(--n)*1ch)}}#tb{display:grid;grid-template-columns:repeat(auto-fill,minmax(48px,1fr));gap:6px}#tb .w2{grid-column:span 2}#vw{display:grid;grid-template-columns:1fr 1fr;gap:6px}#vw .sz{grid-column:1/-1;display:flex;align-items:center;gap:10px;font-size:13px}#vw input{flex:1;min-width:0;accent-color:#6b86ff}#xr{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(48px,1fr));gap:6px}#xr select{min-width:0}.lb{font-size:11px;letter-spacing:.15em;color:#7d89bd;margin:16px 0 6px;text-transform:uppercase}#tb,#vw,#xr{margin-left:0;margin-right:0}button{white-space:nowrap;padding:8px 4px}.rec #vw,.rec .lb{display:none}.st.ex{width:540px!important;height:540px!important;flex:none}.rec #xr{display:none}</style></head><body>
 <svg width="0" height="0" style="position:absolute"><defs>
 <symbol id="u" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></symbol>
-<symbol id="env" viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 011 1v12a1 1 0 01-1 1H3a1 1 0 01-1-1V6a1 1 0 011-1zm1.5 2.2L12 13l7.5-5.8-.9-1.2L12 11 5.4 6z"/></symbol>
+<symbol id="pin" viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7zm0 9.500a2.500 2.500 0 110-5 2.500 2.500 0 010 5z"/></symbol><symbol id="shield" viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.500 9-8 11-4.500-2-8-6-8-11V5z"/></symbol><symbol id="bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></symbol><symbol id="star" viewBox="0 0 24 24"><path d="M12 2l3 7 7 .6-5.300 4.700 1.700 7.200L12 17.800 6.600 21.500l1.700-7.200L3 9.600 10 9z"/></symbol><symbol id="phone" viewBox="0 0 24 24"><path d="M7 2h10a2 2 0 012 2v16a2 2 0 01-2 2H7a2 2 0 01-2-2V4a2 2 0 012-2zm5 17.500a1 1 0 100-2 1 1 0 000 2zM7.500 5v11h9V5z"/></symbol><symbol id="gl" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><ellipse cx="12" cy="12" rx="4" ry="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 12h18" fill="none" stroke="currentColor" stroke-width="2"/></symbol><symbol id="env" viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 011 1v12a1 1 0 01-1 1H3a1 1 0 01-1-1V6a1 1 0 011-1zm1.5 2.2L12 13l7.5-5.8-.9-1.2L12 11 5.4 6z"/></symbol>
 </defs></svg>
 <div class="w"><div id="s" class="st"></div><div id="cap"></div><div id="tb"></div></div>
 <script>"use strict";
@@ -4256,48 +4256,45 @@ const col={b:'#6b86ff',p:'#b57cff',t:'#ff6bb5',r:'#ff5a4d',g:'#ff9f43'};
 const C=(c,x,y,w,h,t,body,ex='',bc='')=>`<div class="c" style="--c:${col[c]};left:${x}cqw;top:${y}cqw;width:${w}cqw;height:${h}cqw" ${ex}><b>${t}</b><div class="bd ${bc}">${body}</div></div>`;
 const L=n=>'<div class="ln"></div>'.repeat(n);
 const N=(a,b,n,o='')=>`<span class="big" data-a="${a}" data-b="${b}" data-n="${n}" ${o}>0</span>`;
+const pl=(c,x,y,t,r,fs=3.6)=>`<div class="pill" style="--c:${col[c]};left:${x}cqw;top:${y}cqw;font-size:${fs}cqw" data-r="${r}">${t}</div>`;
+const pin=(z=9)=>ic('pin',`style="width:${z}cqw;height:${z}cqw"`),ii=(n,z=10)=>ic(n,`style="width:${z}cqw;height:${z}cqw"`);
+const big=(t,c,fs=7)=>`<span style="font-size:${fs}cqw;font-weight:700;color:${col[c]};text-shadow:0 0 2.5cqw ${col[c]}">${t}</span>`;
+const arw=(x,y,r)=>`<div style="position:absolute;left:${x}cqw;top:${y}cqw;font-size:7cqw;color:#ff9f43" data-r="${r}"><span style="display:inline-block;animation:pu 1s infinite">\u279c</span></div>`;
 const S=[
-{d:6,cap:'1. Hook — friend ki website, par inquiries 0',h:
- C('p',18,6,64,38,"Friend's Website",L(3),'data-r="0.2"')+
- C('r',30,54,40,30,'Inquiries <i class="pd"></i>','<span class="big" style="color:#ff5a4d">0</span><small>No inquiries</small>','data-r="1.5"')},
-{d:10,cap:'2. 3000 visitors → sirf 24 inquiries (0.8%)',h:
- C('b',30,2,40,20,'Users',ic('u')+N(.5,4,3000),'data-r="0"','r')+
- '<i class="dot"></i><i class="dot" style="animation-delay:.4s;left:45cqw"></i><i class="dot" style="animation-delay:.8s;left:53cqw"></i>'+
- C('p',25,36,50,14,'Website','<small>visitors aa rahe hain</small>','data-r="1"')+
- '<svg style="position:absolute;left:25cqw;top:52cqw;width:50cqw;height:12cqw" viewBox="0 0 100 24" data-r="5"><polygon points="0,0 100,0 60,24 40,24" fill="#b57cff33" stroke="#b57cff" stroke-width=".8"/></svg>'+
- C('g',30,66,40,22,'Inquiries',N(7,9,24),'data-r="6.5"')+
- '<div class="pill" style="--c:#ff5a4d;left:72cqw;top:72cqw" data-r="9">Conversion 0.8%</div>'},
-{d:12,cap:'3. User 3 pages scroll karta hai, info nahi milti → Exit',h:
- [6,30,54].map((y,i)=>C('p',12,y,34,18,'Page '+(i+1),L(2),`data-r="${.3+i*.3}"`)).join('')+
- [['What you do',2],['Services',3.6],['Pricing',5.2],['Trust',6.8]].map((a,i)=>C('t',58,6+i*21,38,13,a[0],'<span class="q">?</span>',`data-r="${a[1]}"`)).join('')+
- `<div class="u2">${ic('u','style="width:6cqw;height:6cqw"')}</div>`+
- '<div class="pill" style="--c:#ff5a4d;left:80cqw;top:85cqw" data-r="8.2">EXIT ➜</div>'},
-{d:10,cap:'4. Solution — ek simple, clean page par saari info',h:
- C('p',8,6,84,72,'One Clean Page',
- [['What we do',1],['Services',2.4],['Pricing',3.8],['Why trust us',5.2]].map(a=>`<div class="row" data-r="${a[1]}">${a[0]}<span data-r="${a[1]+.8}">${ck}</span></div>`).join(''),'data-r="0"')+
- '<div class="pill" style="--c:#ff9f43;left:28cqw;top:84cqw;font-size:3.6cqw" data-r="7.5">Simple + Premium ✦</div>'},
-{d:12,cap:'5. Growth — 0.8% → 1.3%+, 24 → 39+ inquiries (visitors 3000 fixed)',h:
- '<div class="pill" style="--c:#6b86ff;left:30cqw;top:2cqw" data-r="0.2">Visitors: 3000 (same)</div>'+
- C('p',6,12,40,72,'Conversion','<div style="position:relative;width:100%;height:100%">'+
-  '<div class="bar" style="left:8%;height:55%;background:#ff5a4d" data-r="1" data-k="g"></div>'+
-  '<div class="bar" style="left:58%;height:88%;background:#ff9f43" data-r="4" data-k="g"></div></div>'+
-  '<div style="display:flex;justify-content:space-around;width:100%"><span>0.8%</span><span class="big" style="font-size:4.5cqw" data-a="4" data-b="6" data-f="0.8" data-n="1.3" data-d="1" data-s="%">0.8</span></div>','data-r="0.5"')+
- C('g',54,12,40,72,'Inquiries','<div style="position:relative;width:100%;height:100%">'+
-  '<div class="bar" style="left:8%;height:55%;background:#ff5a4d" data-r="1.5" data-k="g"></div>'+
-  '<div class="bar" style="left:58%;height:88%;background:#ff9f43" data-r="5" data-k="g"></div></div>'+
-  '<div style="display:flex;justify-content:space-around;width:100%"><span>24</span><span class="big" style="font-size:4.5cqw" data-a="5" data-b="7" data-f="24" data-n="39" data-s="+">24</span></div>','data-r="0.5"')+
- '<div class="pill" style="--c:#ff9f43;left:38cqw;top:88cqw" data-r="7.5"><span class="ar">▲</span> +15 inquiries</div>'},
-{d:12,cap:'6. CTA — comment "inquiries" → DM me free guide',h:
- C('b',12,8,76,20,'Comment','<span class="ty">inquiries</span>','data-r="0"')+
- '<div style="position:absolute;left:46cqw;top:30cqw;font-size:6cqw;color:#6b86ff" data-r="5">▼</div>'+
- C('p',12,42,76,44,'DM',ic('env','style="width:12cqw;height:12cqw"')+'<span style="font-size:4cqw">Free Guide</span>','data-r="5.5"')+
- '<div style="position:absolute;left:74cqw;top:62cqw" data-r="7.5">'+ck.replace('class="tk"','class="tk" style="width:8cqw;height:8cqw"')+'</div>'}
+{d:6,cap:'1. Location \u2014 Kashipur, Jaspur, Ramnagar',h:
+ ['Kashipur','Jaspur','Ramnagar'].map((n,i)=>C(['g','p','t'][i],6+i*31,26,26,32,n,pin(10),`data-r="${.4+i*1.1}"`)).join('')+pl('b',27,70,'Aap yahan se ho?',3.6,4.2)},
+{d:7,cap:'2. Service ko online lao \u2014 Website / App / Software',h:
+ C('b',6,32,30,30,'Your Service',ii('star',11),'data-r="0.3"')+arw(40,40,1.2)+
+ [['Website','gl','g'],['App','phone','t'],['Software','','p']].map((a,i)=>C(a[2],56,6+i*28,38,20,a[0],a[1]?ii(a[1],9):big('&lt;/&gt;','p',7),`data-r="${1.8+i*1.1}"`)).join('')+pl('r',6,70,'Online ho jao',5.4,4)},
+{d:6,cap:'3. Main develop karunga \u2014 code se live app tak',h:
+ C('b',6,8,88,44,'Developer','<div class="ln" style="width:70%" data-r="0.8"></div><div class="ln" style="width:50%;background:#ff9f43" data-r="1.4"></div><div class="ln" style="width:80%" data-r="2"></div><div class="ln" style="width:40%;background:#ff6bb5" data-r="2.6"></div>','data-r="0.2"')+
+ C('g',6,62,88,26,'Building','<div style="width:100%;height:4cqw;background:#2b3354;border-radius:2cqw;overflow:hidden"><div class="wd"></div></div><span data-a="1.5" data-b="5.1" data-n="100" data-s="%" style="font-size:5cqw;font-weight:700;color:#ff9f43">0</span>','data-r="0.6"')},
+{d:9,cap:'4. Professional \u00b7 Fast \u00b7 Secure',h:
+ [['Professional','star','b'],['Fast','bolt','g'],['Secure','shield','p']].map((a,i)=>C(a[2],4+i*32,22,28,46,'<span style="font-size:2.7cqw">'+a[0]+'</span>',ii(a[1],12)+ck,`data-r="${.4+i*2.2}"`)).join('')},
+{d:8,cap:'5. Website ke liye Free Domain + Hosting',h:
+ C('p',6,8,88,32,'Website','<span class="ty2" style="--n:16;--td:8s;font-size:4.6cqw;color:#e6eaff">yourbusiness.com</span>','data-r="0.2"')+
+ C('g',6,50,42,34,'Free Domain',ii('gl',10)+big('FREE','g',6),'data-r="3.5"')+C('t',52,50,42,34,'Free Hosting',ii('bolt',10)+big('FREE','t',6),'data-r="5"')},
+{d:8,cap:'6. App ke liye Free Play Store + App Store',h:
+ C('b',6,8,32,72,'Your App',ii('phone',16),'data-r="0.3"')+C('g',46,8,48,32,'Play Store',big('LIVE','g',6)+ck,'data-r="2.5"')+C('t',46,48,48,32,'App Store',big('LIVE','t',6)+ck,'data-r="4.5"')+pl('r',30,86,'Public + FREE',6.5,4)},
+{d:8,cap:'7. 3 Free Versions',h:
+ [1,2,3].map((n,i)=>C(['b','g','t'][i],4+i*32,14,28,34,'Version',big('V'+n,['b','g','t'][i],10),`data-r="${.5+i*1.5}"`)).join('')+
+ '<div style="position:absolute;left:0;width:100%;top:58cqw;text-align:center;font-size:14cqw;font-weight:700;color:#ff9f43;text-shadow:0 0 3cqw #ff9f43" data-r="1"><span data-a="0.8" data-b="4.5" data-n="3" data-s=" FREE">0</span></div>'+pl('r',26,82,'3 Free Versions',5.5,4)},
+{d:8,cap:'8. 1 Year Technical Support',h:
+ C('b',6,8,88,38,'Technical Support',ii('u',10)+'<span data-a="0.5" data-b="4.5" data-n="12" data-s=" Months" style="font-size:7cqw;font-weight:700;color:#ff9f43">0</span>','data-r="0.2"')+
+ Array.from({length:12},(_,i)=>`<div style="position:absolute;left:${6+i*7.4}cqw;top:56cqw;width:5.6cqw;height:10cqw;background:#ff9f43;border-radius:1cqw;box-shadow:0 0 2cqw #ff9f43;transform-origin:bottom" data-r="${.5+i*.33}" data-k="g"></div>`).join('')+pl('t',30,76,'1 Year Support',5,4)},
+{d:7,cap:'9. Business ya idea ho to comment karo',h:
+ C('b',8,8,84,24,'Comment','<span class="ty2" style="--n:13;--td:7s;font-size:5cqw;color:#e6eaff">website / app</span>','data-r="0.2"')+
+ '<div style="position:absolute;left:46cqw;top:34cqw;font-size:6cqw;color:#6b86ff" data-r="3">\u25bc</div>'+
+ C('g',8,46,40,34,'Business',ii('star',11),'data-r="3.4"')+C('t',52,46,40,34,'Idea',ii('bolt',11),'data-r="4.6"')},
+{d:8,cap:'10. Location DM karo \u2192 jaldi meeting',h:
+ C('t',6,8,40,36,'Send Location',pin(11)+'<span style="font-size:3cqw">Kashipur</span>','data-r="0.3"')+arw(48,20,1.5)+C('g',56,8,38,36,'Meeting',ii('star',10)+ck,'data-r="2.6"')+
+ pl('b',20,56,'Kashipur ke aas-paas?',4,4)+pl('r',26,72,'Jaldi Meeting!',5.5,5.4)}
 ];
 const st=document.getElementById('s'),cap=document.getElementById('cap'),tb=document.getElementById('tb');
 let cur=0,t0=0,auto=true,kf=document.createElement('style');document.head.appendChild(kf);
 S.forEach((_,i)=>{const b=document.createElement('button');b.textContent=i+1;b.onclick=()=>{auto=false;pa.classList.remove('on');load(i)};tb.appendChild(b)});
 const pa=document.createElement('button');pa.textContent='▶ Play all';pa.className='on';pa.onclick=()=>{auto=!auto;pa.classList.toggle('on',auto);load(cur)};tb.appendChild(pa);const rb=document.createElement('button');rb.textContent='🎬 Record mode';rb.onclick=()=>{auto=true;document.documentElement.classList.add('rec');load(0)};tb.appendChild(rb);st.onclick=()=>{document.documentElement.classList.remove('rec')};const bb=document.createElement('button');let bi=0;const BG=[['Black','#000'],['Green','#00b140']];bb.textContent='BG: Black';bb.onclick=()=>{bi=(bi+1)%2;document.documentElement.style.setProperty('--bg',BG[bi][1]);bb.textContent='BG: '+BG[bi][0]};tb.appendChild(bb);
-function load(i){cur=i;const sc=S[i],d=sc.d;st.innerHTML=`<div style="position:absolute;inset:0;transform:${['translateY(3cqw) scale(1.05)','translate(-10cqw,4cqw) scale(.98)','translateY(1cqw) scale(.92)','translateY(2cqw) scale(.95)','scale(.94)','translateY(3cqw) scale(1.05)'][i]}">${sc.h}</div>`;cap.textContent=sc.cap;st.insertAdjacentHTML('afterbegin',Array.from({length:16},()=>`<i class="pt" style="left:${Math.random()*100}cqw;animation-duration:${6+Math.random()*6}s;animation-delay:-${Math.random()*8}s"></i>`).join(''));st.insertAdjacentHTML('beforeend',`<span class="chip">${sc.cap.split('—')[0].trim().toUpperCase()}</span><div class="pg" style="animation-duration:${d}s"></div>`);
+function load(i){cur=i;const sc=S[i],d=sc.d;st.innerHTML=`<div data-sc data-b="" style="position:absolute;inset:0;transform:scale(${SC})">${sc.h}</div>`;cap.textContent=sc.cap;st.insertAdjacentHTML('afterbegin',Array.from({length:16},()=>`<i class="pt" style="left:${Math.random()*100}cqw;animation-duration:${6+Math.random()*6}s;animation-delay:-${Math.random()*8}s"></i>`).join(''));st.insertAdjacentHTML('beforeend',`<span class="chip">${sc.cap.split('—')[0].trim().toUpperCase()}</span><div class="pg" style="animation-duration:${d}s"></div>`);
  [...tb.children].forEach((b,j)=>b.classList.toggle('on',j==i&&j<S.length&&!auto?true:(j==i&&auto)));
  pa.classList.toggle('on',auto);
  let css='',p=x=>(x/d*100).toFixed(2);
@@ -4368,5 +4365,15 @@ const fm=mk([['mp4','MP4'],['gif','GIF'],['webm','WebM'],['png','PNG frames (ZIP
 const xr=document.createElement('div');xr.id='xr';xr.style.cssText='display:flex;gap:6px;flex-wrap:wrap;margin:0 10px 10px';xr.append(fm,bgs);
 S.forEach((_,i)=>{const b=document.createElement('button');b.textContent='\u2b07 '+(i+1);b.onclick=()=>run([i]);xr.appendChild(b)});
 const ba=document.createElement('button');ba.textContent='\u2b07 All merged';ba.onclick=()=>run(S.map((_,i)=>i));xr.appendChild(ba);tb.after(xr);
+let SC=1;
+const lb=t=>{const d=document.createElement('div');d.className='lb';d.textContent=t;return d};
+const sw=document.createElement('div');sw.className='sz';const sv=document.createElement('span');sv.textContent='100%';sv.style.minWidth='42px';
+const sl=document.createElement('input');sl.type='range';sl.min=40;sl.max=130;sl.value=100;const sr=document.createElement('button');sr.textContent='Reset';
+const setSz=v=>{SC=v/100;sl.value=v;sv.textContent=v+'%';const w=st.querySelector('[data-sc]');if(w){let b=w.dataset.b||'';if(b=='none')b='';w.style.transform=(b+' scale('+SC+')').trim()}};
+sl.oninput=()=>setSz(+sl.value);sr.onclick=()=>setSz(100);
+const lt=document.createElement('span');lt.textContent='Visual size';sw.append(lt,sl,sv,sr);
+const vw=document.createElement('div');vw.id='vw';vw.append(rb,bb,sw);
+pa.classList.add('w2');xr.style.cssText='';fm.style.gridColumn=bgs.style.gridColumn='span 4';ba.style.gridColumn='1/-1';
+tb.after(vw);tb.before(lb('Scenes'));vw.before(lb('View'));xr.before(lb('Export'));
 load(0);requestAnimationFrame(tick);
 </script></body></html>
